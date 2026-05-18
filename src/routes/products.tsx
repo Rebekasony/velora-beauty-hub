@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
+import { SmartImage } from "@/components/SmartImage";
 
 interface Search { category?: string; q?: string }
 
@@ -143,7 +144,7 @@ function ListView({ items }: { items: Product[] }) {
       {items.map((p) => (
         <div key={p.id} className="flex gap-4 bg-card border border-border rounded-xl p-3 hover:shadow-[var(--shadow-card)]">
           <Link to="/product/$id" params={{ id: p.id }} className="w-24 h-24 sm:w-32 sm:h-32 shrink-0">
-            <img src={p.image} alt={p.name} className="w-full h-full object-cover rounded-lg" />
+            <SmartImage src={p.image} alt={p.name} className="w-full h-full object-cover rounded-lg" />
           </Link>
           <div className="flex-1 flex flex-col">
             <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{p.brand}</p>

@@ -34,7 +34,7 @@ function CartPage() {
           {items.map((i) => (
             <div key={i.product.id} className="flex gap-4 bg-card border border-border rounded-xl p-3 sm:p-4">
               <Link to="/product/$id" params={{ id: i.product.id }} className="w-20 h-20 sm:w-24 sm:h-24 shrink-0">
-                <img src={i.product.image} alt={i.product.name} className="w-full h-full object-cover rounded-lg" />
+                <SmartImage src={i.product.image} alt={i.product.name} className="w-full h-full object-cover rounded-lg" />
               </Link>
               <div className="flex-1 min-w-0">
                 <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{i.product.brand}</p>

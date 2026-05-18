@@ -79,7 +79,7 @@ function CheckoutPage() {
           <div className="space-y-2 mb-4 max-h-60 overflow-y-auto">
             {items.map((i) => (
               <div key={i.product.id} className="flex gap-2 text-sm">
-                <img src={i.product.image} alt="" className="w-10 h-10 rounded object-cover" />
+                <SmartImage src={i.product.image} alt={i.product.name} className="w-10 h-10 rounded object-cover" />
                 <div className="flex-1 min-w-0">
                   <p className="truncate">{i.product.name}</p>
                   <p className="text-xs text-muted-foreground">Qty {i.quantity}</p>

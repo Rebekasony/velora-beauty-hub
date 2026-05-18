@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { toast } from "sonner";
+import { SmartImage } from "@/components/SmartImage";
 
 export const Route = createFileRoute("/product/$id")({
   component: ProductDetail,
@@ -38,12 +39,12 @@ function ProductDetail() {
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
         <div>
           <div className="aspect-square bg-card rounded-2xl overflow-hidden border border-border">
-            <img src={gallery[activeImg]} alt={product.name} className="w-full h-full object-cover" />
+            <SmartImage src={gallery[activeImg]} alt={product.name} className="w-full h-full object-cover" />
           </div>
           <div className="flex gap-2 mt-3">
             {gallery.map((g, i) => (
               <button key={i} onClick={() => setActiveImg(i)} className={`w-16 h-16 rounded-lg overflow-hidden border-2 ${activeImg === i ? "border-secondary" : "border-border"}`}>
-                <img src={g} alt="" className="w-full h-full object-cover" />
+                <SmartImage src={g} alt="" className="w-full h-full object-cover" />
               </button>
             ))}
           </div>

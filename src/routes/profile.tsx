@@ -4,6 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { LogOut, Package } from "lucide-react";
+import { SmartImage } from "@/components/SmartImage";
 
 export const Route = createFileRoute("/profile")({ component: ProfilePage });
 
@@ -94,7 +95,7 @@ function ProfilePage() {
                   </div>
                   <div className="flex items-center gap-2 mt-2">
                     {(o.items as OrderItem[]).slice(0, 3).map((it) => (
-                      <img key={it.id} src={it.image} alt="" className="w-10 h-10 rounded object-cover" />
+                      <SmartImage key={it.id} src={it.image} alt={it.name} className="w-10 h-10 rounded object-cover" />
                     ))}
                     {o.items.length > 3 && <span className="text-xs text-muted-foreground">+{o.items.length - 3}</span>}
                   </div>

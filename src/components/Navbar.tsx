@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { ShoppingBag, Heart, User, Search, Menu, LogOut, ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
@@ -13,12 +13,14 @@ export function Navbar() {
   const { user, signOut } = useAuth();
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
-  const [canGoBack, setCanGoBack] = useState(false);
+  const [showBackButton, setShowBackButton] = useState(false);
   const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
-    setCanGoBack(window.history.length > 1);
-  }, []);
+    const currentPath = router.state.location.pathname;
+    setShowBackButton(currentPath !== "/" && window.history.length > 1);
+  }, [router.state.location.pathname]);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +32,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between gap-4 h-16">
             <div className="flex items-center gap-2">
-              {canGoBack && (
+              {showBackButton && (
                 <button
                   type="button"
                   onClick={() => window.history.back()}

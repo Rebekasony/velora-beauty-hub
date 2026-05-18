@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Sparkles, Truck, ShieldCheck, RotateCcw } from "lucide-react";
 import { products, categories } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { SmartImage } from "@/components/SmartImage";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -60,7 +61,7 @@ function Carousel() {
           </Link>
         </div>
         <div className="hidden md:block relative">
-          <img src={slide.img} alt={slide.title} className="rounded-2xl aspect-square object-cover w-full max-w-md ml-auto shadow-[var(--shadow-soft)]" />
+          <SmartImage src={slide.img} alt={slide.title} className="rounded-2xl aspect-square object-cover w-full max-w-md ml-auto shadow-[var(--shadow-soft)]" />
         </div>
       </div>
       <button onClick={() => setI((p) => (p - 1 + slides.length) % slides.length)} className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur flex items-center justify-center hover:bg-card transition" aria-label="Previous">

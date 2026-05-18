@@ -4,6 +4,7 @@ import type { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { toast } from "sonner";
+import { SmartImage } from "@/components/SmartImage";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
@@ -14,7 +15,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-[var(--shadow-soft)] transition-all duration-300 flex flex-col">
       <Link to="/product/$id" params={{ id: product.id }} className="relative block aspect-square overflow-hidden bg-muted">
-        <img
+        <SmartImage
           src={product.image}
           alt={product.name}
           loading="lazy"

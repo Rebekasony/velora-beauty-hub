@@ -3,6 +3,8 @@ import { Heart, ShoppingBag, Trash2 } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
 import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
+import { SmartImage } from "@/components/SmartImage";
+import { SmartImage } from "@/components/SmartImage";
 
 export const Route = createFileRoute("/wishlist")({ component: WishlistPage });
 
@@ -28,7 +30,7 @@ function WishlistPage() {
         {items.map((p) => (
           <div key={p.id} className="bg-card rounded-xl border border-border overflow-hidden">
             <Link to="/product/$id" params={{ id: p.id }} className="block aspect-square bg-muted">
-              <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+              <SmartImage src={p.image} alt={p.name} className="w-full h-full object-cover" />
             </Link>
             <div className="p-3">
               <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{p.brand}</p>
