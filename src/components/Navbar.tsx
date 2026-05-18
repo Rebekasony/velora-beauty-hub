@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ShoppingBag, Heart, User, Search, Menu, LogOut } from "lucide-react";
-import { useState } from "react";
+import { ShoppingBag, Heart, User, Search, Menu, LogOut, ArrowLeft } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { categories } from "@/data/products";
@@ -13,7 +13,12 @@ export function Navbar() {
   const { user, signOut } = useAuth();
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
+  const [canGoBack, setCanGoBack] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCanGoBack(window.history.length > 1);
+  }, []);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,15 +29,26 @@ export function Navbar() {
     <header className="sticky top-0 z-50 bg-card/95 backdrop-blur border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between gap-4 h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">V</span>
+            <div className="flex items-center gap-2">
+              {canGoBack && (
+                <button
+                  type="button"
+                  onClick={() => window.history.back()}
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-border bg-muted text-sm text-foreground hover:bg-secondary/10 transition"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Back
+                </button>
+              )}
+              <Link to="/" className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-lg">V</span>
+                </div>
+                <span className="font-bold text-xl text-primary tracking-tight hidden sm:inline">
+                  Velora<span className="text-secondary">Cart</span>
+                </span>
+              </Link>
             </div>
-            <span className="font-bold text-xl text-primary tracking-tight hidden sm:inline">
-              Velora<span className="text-secondary">Cart</span>
-            </span>
-          </Link>
-
           <form onSubmit={submit} className="hidden md:flex flex-1 max-w-xl relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <input
