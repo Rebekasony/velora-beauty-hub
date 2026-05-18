@@ -107,6 +107,53 @@ function ProfilePage() {
             </div>
           )}
         </div>
+
+        <div className="bg-card border border-border rounded-xl p-5 mt-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="font-bold text-lg">Order Tracking</h3>
+              <p className="text-sm text-muted-foreground">Tracking details and estimated delivery</p>
+            </div>
+            <span className="text-xs text-muted-foreground">Placeholder</span>
+          </div>
+
+          <div className="space-y-4">
+            <div className="rounded-2xl bg-muted p-4 border border-border">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Tracking number</p>
+              <p className="mt-2 text-lg font-semibold">#c8c3de09</p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-border p-4">
+                <p className="text-sm text-muted-foreground">Estimated arrival</p>
+                <p className="mt-2 text-xl font-semibold">Thu, May 23</p>
+                <p className="text-sm text-muted-foreground">Arriving between 3:00 PM and 6:00 PM</p>
+              </div>
+              <div className="rounded-2xl border border-border p-4">
+                <p className="text-sm text-muted-foreground">Shipping address</p>
+                <p className="mt-2 font-semibold">{profile.address || "123 Main Street, City, Country"}</p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-border p-4 bg-background">
+              <p className="text-sm font-medium mb-3">Delivery progress</p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+                  <span className="text-sm font-medium">Order confirmed</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+                  <span className="text-sm font-medium">Packaged at facility</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-border" />
+                  <span className="text-sm text-muted-foreground">Out for delivery</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
